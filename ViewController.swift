@@ -28,12 +28,6 @@ class ViewController: UIViewController {
         updateDisplayedValues()
     }
     
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    
     func setSliderOptionsFromUserDefaults() {
         // sets the min/max/default of tip slider based on the user's settings
         
@@ -70,7 +64,6 @@ class ViewController: UIViewController {
         // clear the bill amount when the user enteres the field
         billField.text = ""
     }
-    
     
     @IBAction func onAmountFieldChanged(sender: AnyObject) {
         updateDisplayedValues()

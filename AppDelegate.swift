@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         setDefaultSettingsValues()
@@ -44,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let timeDelta = NSDate().timeIntervalSinceDate(timeAppEnteredBackground! as NSDate)
             
             // Reset the settings if the app has been in the background for longer than a given number of seconds
-            if timeDelta > 5 {
+            if timeDelta > 100 {
                 setDefaultSettingsValues()
             }
         }
@@ -68,7 +67,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setInteger(18, forKey: "defaultTip")
         defaults.synchronize()
     }
-    
-
 }
 
