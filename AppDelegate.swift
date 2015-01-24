@@ -15,9 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as UINavigationController
         let viewController = storyboard.instantiateViewControllerWithIdentifier("TipViewController") as ViewController
+        navigationController.viewControllers = [viewController]
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = viewController
+        self.window?.rootViewController = navigationController
         
         // Override point for customization after application launch.
         setDefaultSettingsValues()
@@ -46,11 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Reset the settings and reload the viewcontroller if the app has been in the background for more than a given number of seconds
             // There must be a more 'correct' way to do this
-            if timeDelta > 100 {
+            if timeDelta > 1 {
                 setDefaultSettingsValues()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as UINavigationController
                 let viewController = storyboard.instantiateViewControllerWithIdentifier("TipViewController") as ViewController
-                self.window?.rootViewController = viewController
+                navigationController.viewControllers = [viewController]
+                
+                self.window?.rootViewController = navigationController
             }
         }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.

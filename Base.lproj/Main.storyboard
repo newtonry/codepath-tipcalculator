@@ -192,6 +192,9 @@
                                     <color key="titleColor" red="0.48627454040000001" green="0.5176470876" blue="0.43921571970000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveClicked:" destination="6Lz-Ud-cXJ" eventType="touchUpInside" id="cvt-ca-bXj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85490202900000001" green="0.82352948189999997" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>

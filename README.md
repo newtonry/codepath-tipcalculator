@@ -2,7 +2,7 @@
 
 This is a tip calculator created for the CodePath pre-work. It follows the following video: http://vimeo.com/102084767 as well as additional instructions at https://gist.github.com/timothy1ee/6858b706304a2397a7e2.
 
-Time spent: 6 hours
+Time spent: 7 hours
 
 Completed user stories:
 
