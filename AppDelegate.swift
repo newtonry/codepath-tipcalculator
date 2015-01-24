@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("TipViewController") as ViewController
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = viewController
+        
         // Override point for customization after application launch.
         setDefaultSettingsValues()
         return true
@@ -25,12 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        println("Entering background state")
         let timeAppEnteredBackground = NSDate()
-        
         var defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(timeAppEnteredBackground, forKey: "timeAppEnteredBackground")
-        
         
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -42,9 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let timeAppEnteredBackground: AnyObject? = defaults.objectForKey("timeAppEnteredBackground")? {
             let timeDelta = NSDate().timeIntervalSinceDate(timeAppEnteredBackground! as NSDate)
             
-            // Reset the settings if the app has been in the background for longer than a given number of seconds
+            // Reset the settings and reload the viewcontroller if the app has been in the background for more than a given number of seconds
+            // There must be a more 'correct' way to do this
             if timeDelta > 100 {
                 setDefaultSettingsValues()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateViewControllerWithIdentifier("TipViewController") as ViewController
+                self.window?.rootViewController = viewController
             }
         }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.

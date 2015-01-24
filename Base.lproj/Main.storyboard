@@ -5,21 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tip Calculator-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="tipmunk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TipViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="tipmunk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vI0-gV-5gd">
-                                <rect key="frame" x="16" y="109" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.25882354378700256" green="0.31764706969261169" blue="0.23529413342475891" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$118.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jLa-i5-WU8">
                                 <rect key="frame" x="161" y="243" width="143" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -70,7 +63,7 @@
                                 <color key="backgroundColor" red="0.28861928471764464" green="0.77772588315217395" blue="0.0" alpha="0.17000000000000001" colorSpace="calibratedRGB"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="$" textAlignment="right" minimumFontSize="17" id="MJ0-sh-wEU">
-                                <rect key="frame" x="111" y="52" width="209" height="111"/>
+                                <rect key="frame" x="0.0" y="52" width="320" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7137255072593689" green="0.70588237047195435" blue="0.56078433990478516" alpha="0.57999999999999996" colorSpace="deviceRGB"/>
                                 <color key="textColor" red="0.2588235438" green="0.31764706970000001" blue="0.23529413339999999" alpha="1" colorSpace="deviceRGB"/>
@@ -81,6 +74,13 @@
                                     <action selector="onAmountFieldChanged:" destination="vXZ-lx-hvc" eventType="editingChanged" id="30H-g0-HCx"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vI0-gV-5gd">
+                                <rect key="frame" x="16" y="109" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25882354378700256" green="0.31764706969261169" blue="0.23529413342475891" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.85490202903747559" green="0.82352948188781738" blue="0.69411766529083252" alpha="1" colorSpace="deviceRGB"/>
                         <gestureRecognizers/>
@@ -88,7 +88,7 @@
                             <outletCollection property="gestureRecognizers" destination="HEJ-cP-VVm" appends="YES" id="SSR-Tz-aZz"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="1Ai-HN-hzZ">
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="1Ai-HN-hzZ">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="lpk-fi-mWP">
                             <connections>
                                 <segue destination="6Lz-Ud-cXJ" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="QjY-Uu-i4w"/>
@@ -110,7 +110,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="606" y="127.99999999999991"/>
+            <point key="canvasLocation" x="606" y="127"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="asU-qA-8eP">
@@ -192,9 +192,6 @@
                                     <color key="titleColor" red="0.48627454040000001" green="0.5176470876" blue="0.43921571970000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="saveClicked:" destination="6Lz-Ud-cXJ" eventType="touchUpInside" id="FF3-0e-B7s"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85490202900000001" green="0.82352948189999997" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -243,4 +240,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.43529415129999999" green="0.2823529541" blue="0.21568629149999999" alpha="1" colorSpace="deviceRGB"/>
 </document>
