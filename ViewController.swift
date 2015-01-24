@@ -18,17 +18,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Could just do this in the storyboard probably? But this works too
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setSliderOptionsFromUserDefaults()
-        updateDisplayedValues()
+        refreshSliderFromUserDefaults()
+        refreshDisplayedValues()
     }
     
-    func setSliderOptionsFromUserDefaults() {
+    func refreshSliderFromUserDefaults() {
         // sets the min/max/default of tip slider based on the user's settings
         
         var defaults = NSUserDefaults.standardUserDefaults()
@@ -42,10 +43,11 @@ class ViewController: UIViewController {
         tipValueSlider.value = defaultTip
     }
     
-    func updateDisplayedValues() {
+    func refreshDisplayedValues() {
         var intTipValue = Int(tipValueSlider.value)
         let tipAmount = Double(tipValueSlider.value/100)
 
+        // Maybe have a bill calculator class or func in another situation, but I think it's simple enough here
         var billAmount = (billField.text as NSString).doubleValue
         var tip = billAmount * tipAmount
         var total = billAmount + tip
@@ -54,25 +56,25 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", total)
         tipPercentageLabel.text = "\(intTipValue)%"
 
+        // A tiny bit of animation so that the number flashes when it's changed
         self.totalLabel.alpha = 0
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.alpha = 1
         })
     }
-    
+
     @IBAction func billAmountFieldEntered(sender: AnyObject) {
-        // clear the bill amount when the user enteres the field
+        // clear the bill amount when the user enters the field, just a bit of UI functionality
         billField.text = ""
     }
     
     @IBAction func onAmountFieldChanged(sender: AnyObject) {
-        updateDisplayedValues()
+        refreshDisplayedValues()
     }
     
     @IBAction func tipSliderChanged(sender: UISlider) {
-        updateDisplayedValues()
+        refreshDisplayedValues()
     }
-
     
     @IBAction func onTap(sender: AnyObject) {
         // Allows the user to tap out of the keyboard

@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Fills in the current values
         var defaults = NSUserDefaults.standardUserDefaults()
 
         let maxTip = Float(defaults.integerForKey("maxTip"))
@@ -30,7 +31,7 @@ class SettingsViewController: UIViewController {
     func saveNewSettings() {
         var defaults = NSUserDefaults.standardUserDefaults()
         
-        // In case the user leaves the field blank
+        // Optionals in case the user leaves the field blank. Then we set it to the normal default
         if let newMinValue = tipMinField.text?.toInt() {
             defaults.setInteger(newMinValue, forKey: "minTip")
         } else {
@@ -52,7 +53,7 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
     }
 
-    @IBAction func saveSettingsClicked(sender: AnyObject) {
+    @IBAction func saveClicked(sender: AnyObject) {
         saveNewSettings()
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -67,6 +68,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTap(sender: AnyObject) {
+        // Removes the keyboard
         view.endEditing(true)
     }
 
